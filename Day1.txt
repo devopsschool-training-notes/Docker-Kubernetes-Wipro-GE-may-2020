@@ -376,11 +376,42 @@ Assignmennt -
 	What is Diff between PAUSE and UNPAUSE?
 	What is Diff between Stop and Kill?
 
+Bhargav Banala		13.233.131.93
+prashant kumar		13.235.74.133
+Lokesh Yerrabothula	13.235.71.72
+Dileep G S		13.233.38.183
+Paridhi Nahar		13.126.221.5
+Siddharth Bisaria	15.206.88.91
+Avik Bhattacharya	52.66.251.10
+Sheetal R Powar		13.233.79.5
+Mahesh Bhuwanagiri	13.127.242.195
+Prasad Mutalikdesai	13.126.213.45
+Mahesh P		3.7.65.11
+Abhishek Singh		13.232.218.209	
+Mary Elizabeth K J	35.154.235.112
+Bhavani Shankar G	15.206.90.193
+Swagat Panigrahi	13.234.76.216
+Nishant Kumar Singh	13.233.15.221
+Ayush Soni		3.7.68.86
+Maninder Singh		15.206.149.40
+Depak George Sathyasandan	13.126.172.150
+Dhanendra Sahu		13.232.250.226
+B V Arun ragavan	13.126.161.106
+Raghavendra Gubba	13.233.145.9
+Shammi Shetty		13.232.224.57
+Soumyarka Chatterjee	13.232.208.187
+Amarnath Reddy Chavva	13.232.208.69
 
-
-
-
-
+ec2-user
+Key 
+	USING SSH from Linux - PEM
+	using Putty from Windows - PPK
+			https://www.devopsschool.com/notes/docker/2019/
+			rajesh-mumbai.ppk
+https://www.devopsschool.com/blog/how-to-login-linux-server-of-aws-from-windows-using-putty/	
+		Step 4 
+		Step 5
+		Step 6
 
 
 
