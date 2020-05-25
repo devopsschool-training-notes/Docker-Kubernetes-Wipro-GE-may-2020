@@ -414,12 +414,96 @@ https://www.devopsschool.com/blog/how-to-login-linux-server-of-aws-from-windows-
 		Step 5
 		Step 6
 
+===========================================================================
+What is PID 1?
+======================================================================
+PID 1 is running		PID 1 is running		PID 1 is running
+in Physcial Machine		in Virtual Machine		in Container 
 
+OS				OS				NO OS (Image)
 
+PID 1 is systemd		PID 1 is systemd		ANYTHING
+============================================================================
 
+RUN = pull + create + start + BECOME Container
+		docker run imagename
+	Not to become
+		docker run -d imgname
 
+How to come out of the container safetly?
+==========================================
+control + p + q
 
+======================================================
+How to use containers?
+============================
+You need to get inside a container?
+- exec way
+	exec is way to execute an executable inside a container.
+		with -it and shell - you can interact
+- attach
+	attach will get attached to a process of PID 1
 
+ 12  docker run -it ubuntu
+   13  docker ps
+   14  docker ps -a
+   15  docker run -it ubuntu
+   16  clear
+   17  docker ps
+   18  docker run -itd ubuntu
+   19  docker ps
+   20  docker run -itd ubuntu
+   21  docker ps
+   22  docker run -itd jenkins
+   23  docker ps -a
+   24  clear
+   25  docker run -it jenkins
+   26  docker ps -a
+   27  clear
+   28  ps -eaf | grep docker
+   29  cleae
+   30  cler
+   31  clear
+   32  docker ps
+   33  docker exec 1808e1d473b6 ls
+   34  docker exec 1808e1d473b6 ps
+   35  df
+   36  clear
+   37  docker exec 1808e1d473b6 dffdsfsfd
+   38  docker exec 1808e1d473b6 dffdf
+   39  docker exec 1808e1d473b6 dffdsfsfd
+   40  docker exec 1808e1d473b6 ps
+   41  clear
+   42  docker ps -a
+   43  docker exec -it 5eb69a48c06d /bin/bash
+   44  docker exec -it 1808e1d473b6 /bin/bash
+   45  docker ps
+   46  clear
+   47  docker ps
+   48  docker attach 1808e1d473b6
+   49  clear
+   50  docker ps -a
+   51  docker ps
+   52  docker attach 0b6064385bab
+   53  docker ps
+   54  clear
+   55  docker ps -a
+   56  docker start 5eb69a48c06d
+   57  clear
+   58  docker ps -
+   59  docker ps
+   60  docker inspect 5eb69a48c06d
+   61  curl http://172.17.0.5:8080
+   62  clear
+   63  docker ps
+   64  docker run -d -p 8080:8080 jenkins
+   65  docker ps -a
+   66  docker ps
+   67  docker run -d -p 8080:8080 jenkins
+   68  docker run -d -p 8090:8080 jenkins
+   69  docker ps
+
+You can access from outside?
 
 
 
