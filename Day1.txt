@@ -1,0 +1,398 @@
+Docker-Kubernetes-Wipro-GE-may-2020
+
+Docker - 2 Days
+Kubernetes - 3 Days
+============================
+9:00 AM - 5:00 PM IST
+===========================
+Lunch break - 12:30 PM - 1:15 PM
+First break - 11:00 AM for 15 mins
+Second break - 3:00 PM for 15 mins
+===============================
+Demo Env - LAB on AWS
+Lab - oN AWS
+==========================================
+1 2 3 4 5 6 7 8 9 0 
+=========================================
+
+
+What is Docker?
+=========================
+	Container mgmt tool
+	Its a Lightweight than HYPERVISOR
+	Release
+		Community - Free and Open Source - Docker Engine
+		Enterprise - PAID (Docker Engine ++++++++)
+		https://www.devopsschool.com/blog/difference-between-docker-community-edition-ce-vs-docker-enterprise-edition-ee-in-2020/
+		https://www.devopsschool.com/blog/what-is-docker-enterprise-3-0-detailed-exaplanations/
+	Latest 19.X
+	by Soloman Hykes
+	Written in Golang
+
+	
+What is def of tool?
+	- Save time
+	- Save cost
+	- Improve Efficiency
+
+What is def of mgmt?	
+	of Container.
+	
+What is Container?
+====================================
+Container is init of USER NS
+			with their own deciated
+				NET NS
+				PMAP NS
+				MNT NS
+					Managed by Docker Engine
+						Powered by KEENAL
+							OS ---> Kernal
+							Namespaces
+								USER -> 1
+								NET -> 1
+								MNT -> 1	 	
+								PMAP -> 1
+						Cgroups
+							Managing CPU and RAM to each process
+						Capability
+							Access of user
+
+Similar to Virtual Machine but lightweight - Wrong but easy to understand.
+is a isoldated way to running complete inde App env.
+
+
+Lets go back in the history of computing.
+--------How to run app?--------------------
+-------What are the components in the computer which runs app?--------
+----------Where do you run app??----------------------------
+========================
+Physical Machine
+	OS ---> Kernal
+			Namespaces
+				USER -> Multiple
+				NET -> 1
+				MNT -> 1	 	
+				PMAP -> 1
+			Cgroups
+				Managing CPU and RAM to each process
+			Capability
+				Access of user
+===================================================
+PC - Personal Computing
+-===========================================================================
+Why We run APP in Multiple Servers instead of 1 SERVER?
+
+- Availability
+- Scalability
+- Isolation
+- Security
+
+===============================================================================
+If you want to run App at mass level? 	
+			How to save cost?
+			How to avoid wastage? ------80%%%
+==========================VIRTUALIZATION=========================================
+Reduced a wastage to 20%
+
+=========================================================
+How to avoid wastage? and How to run many apps with limited hardware?
+================================================================
+
+Architecture of Docker?
+
+
+Human -> Docker Client ----REST-----> Docker Deamon --> ContainerD --> RUNC -> KERNAL
+	-----------------------------------------------
+			Docker Engine
+
+What are the components of Docker?
+- Docker Engine
+- Docker Image
+- Docker Registry
+- Docker Container
+	Whan you RUN an image - you get one container.
+	When you RUN 10 times- you get 10 container.
+
+What is an Image?
+-------------------------------
+ROOT FS + USER FS + APP FS
+- What you have in Image - You have in Container.
+- You dont have in Image - You dont have in cont.
+- App run time complete inde env.
+
+What is filesystem(s)?
+- BOOT FS
+- ROOT FS
+- USER FS
+- APP FS
+
+Registry
+====================
+A place where you can store-download-upload-view multiple images.
+	Public Registry
+	 	hub.docker.com
+		gr
+	Private Registry
+		nexus
+		artifactory
+		ecr
+
+------------------------------------------------
+Workflow of Docker
+=====================================
+HUMAN -> RUN IMAGE(Using Docker Client)
+			---> DockerD Check " DO i have an image"??? WHERE - LOCAL REGISTRY
+				IF Image is there - Container is created
+				If image is not there
+						- Download from registry to Local
+						- Create Container.
+
+
+
+Install Docker Engine?
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+3.7.66.202
+ec2-user
+Key 
+	USING SSH from Linux - PEM
+	using Putty from Windows - PPK
+https://www.devopsschool.com/blog/how-to-login-linux-server-of-aws-from-windows-using-putty/	
+		Step 4 
+		Step 5
+		Step 6
+=========================================================
+
+DOCKER NEEDS ROOT
+or
+ANY USER WHO IS A PART OF LINUX GROUP Called 'Docker"
+
+=========================================================
+  1  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    2  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    3  sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    4  sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+    5  sudo yum install -y docker-ce
+    6  sudo systemctl enable docker
+    7  sudo systemctl start docker
+    8  clear
+    9  docker -v
+   10  docker info
+   11  docker version
+   12  clear
+   13  which docker
+   14  ps -eaf | grep docker
+   15  ps -eaf | grep -i cont
+   16  ps -eaf | grep -i run
+
+
+Human LifeCycle
+==================================
+BORN -> KiD -> TEEN -> YOUNG -> Middle -> OLD -> DIE
+
+Vms LifeCycle
+==================================
+Create -> Start -> Stop -> Restart -> Pause -> Unpause -> Kill -> Remove
+
+Container LifeCycle.
+==================================
+Create -> Start -> Stop -> Restart -> Pause -> Unpause -> Kill -> Remove
+
+RUN = Create + Start + BECOME
+
+
+
+ 22  docker info
+   23  clear
+   24  dcoker images
+   25  clear
+   26  docker images
+   27  docker pull jenkins
+   28  clear
+   29  docker images
+   30  clear
+   31  ls
+   32  docker images
+   33  docker info
+   34  clear
+   35  docker pull jenkins
+   36  docker info
+   37  clear
+   38  docker pull jenkins
+   39  docker info\
+   40  docker info
+   41  history
+   42  clear
+   43  docker pull jenkins
+   44  docker images
+   45  docker ps
+   46  docker ps -a
+   47  clear
+   48  docker create jenkins
+   49  clear
+   50  docker ps
+   51  docker ps -a
+   52  docker start 4d4de3592d5e
+   53  docker ps
+   54  docker ps -a
+   55  clear
+   56  docker ps
+   57  docker stop 4d4de3592d5e
+   58  docker ps -a
+   59  docker restart 4d4de3592d5e
+   60  docker ps -a
+   61  clear
+   62  docker pause 4d4de3592d5e
+   63  clear
+   64  docker ps -a
+   65  docker unpause 4d4de3592d5e
+   66  docker ps -a
+   67  clear
+   68  ls
+   69  docker ps
+   70  docker kill 4d4de3592d5e]
+   71  docker kill 4d4de3592d5e
+   72  docker ps -a
+   73  clear
+   74  docker ps -a
+   75  dcoker rm 4d4de3592d5e
+   76  docker rm 4d4de3592d5e
+   77  docker ps -a
+
+
+What image?
+--------------
+elasticsearch
+nginx
+rabbitmq
+ps
+redis
+velero
+xmind
+tomcat
+dajnzo
+prom
+jetty
+ansible
+java
+kibana
+mysql
+jenkins
+grafana
+
+jenkins
+================================
+	WEB  + Agent
+	8080 + 50000
+	JAVA	
+=======================================
+ROOT FS + USER FS + APP FS
+debian     root     Jenkins
+
+
+Proof - About Container?
+====================================
+Container is init of USER NS
+			with their own deciated
+				NET NS
+				PMAP NS
+				MNT NS
+					Managed by Docker Engine
+						Powered by KEENAL
+							OS ---> Kernal
+							Namespaces
+								USER -> 1
+								NET -> 1
+								MNT -> 1	 	
+								PMAP -> 1
+						Cgroups
+							Managing CPU and RAM to each process
+						Capability
+							Access of user
+
+
+  82  ps
+   83  eccho $SHELL
+   84  echo $SHELL
+   85  ps -eaf | grep 9685
+   86  ps -eaf | grep 9684
+   87  ps -eaf | grep 9650
+   88  ps -eaf | grep 9649
+   89  ps -eaf | grep 9646
+   90  ps -eaf | grep 1293
+   91  ps -eaf
+   92  clear
+   93  ls
+   94  clear
+   95  docker ps
+   96  docker ps -a
+   97  docker create jenkins
+   98  docker start b7fcb2028ebbcd123fba95bc7321eb1147f210251b9325a9ba3f03bbbae16a27
+   99  clear
+  100  docker ps
+  101  docker exec b7fcb2028ebb ps -eaf
+  102  docker create jenkins
+  103  docker start f0744fc6a3dab1df64749f4c42239a0b6202aadb7510d18887d5d38666719c2f
+  104  clear
+  105  docker ps
+  106  docker exex f0744fc6a3da ps -eaf
+  107  clear
+  108  docker exec f0744fc6a3da ps -eaf
+  109  docker ps
+  110  docker exec b7fcb2028ebb ps -eaf
+  111  clear
+  112  ls
+  113  ps
+  114  ps -eaf | grep docker
+  115  ps -eaf | grep 20391
+  116  ps -eaf | grep 10772
+  117  clear
+  118  ifconfig
+  119  clear
+  120  docker ps
+  121  docker inspect f0744fc6a3da
+  122  ping 172.17.0.3
+  123  docker ps
+  124  docker inspect b7fcb2028ebb
+  125  ping 172.17.0.2
+  126  clear
+  127  df -kh
+  128  clear
+  129  docker ps
+  130  dcoker exec f0744fc6a3da touch /opt
+  131  docker exec f0744fc6a3da touch /opt
+  132  docker exec f0744fc6a3da touch /tmp/rajesh1.txt
+  133  docker exec f0744fc6a3da ls /tmp/
+  134  docker exec b7fcb2028ebb touch /tmp/rajesh1.txt
+  135  docker exec b7fcb2028ebb ls /tmp/
+  136  docker exec b7fcb2028ebb touch /tmp/rajesh2.txt
+  137  docker exec b7fcb2028ebb ls /tmp/
+  138  docker exec f0744fc6a3da ls /tmp/
+  139  history
+
+
+
+Assignmennt - 
+	What is Diff between PAUSE and UNPAUSE?
+	What is Diff between Stop and Kill?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
