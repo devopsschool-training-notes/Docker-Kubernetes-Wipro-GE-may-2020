@@ -102,12 +102,210 @@ Nishant Kumar Singh	3.7.66.189
 Ayush Soni		13.232.238.226
 Maninder Singh		13.232.197.208
 Depak George Sathyasandan	13.233.12.193
-Dhanendra Sahu			13.232.169.20
+Dhanendra Sahu			13.232.169.200	
 B V Arun ragavan		52.66.250.237
 Raghavendra Gubba		13.126.190.117
 Shammi Shetty			15.206.187.62	
 Soumyarka Chatterjee	3.7.70.16
 Amarnath Reddy Chavva		13.127.156.140
 Anshuman 			13.127.251.251
+================================================================
+What is An Docker Image?
+------------------------------
+1. Image has multiple Filesystem(s) - Each filesystem we call layer.
+2. Bottom layer is ROOTFs and uP layer having a changes made on top of rootfs for apps.
+3. all layers of an image is READ only
+4. When you create a container.
+	union mount merge all layers and make one layer
+				This one layer is of container
+				This is called merged layyer.
+				its writeable
+5.			 When you have a conflict = Top layer alwasy win
+
+=====================================================================================
+
+
+
+ 405  docker stop $(docker ps -a -q)
+  406  docker rm $(docker ps -a -q)
+  407  clear
+  408  ls
+  409  docker ps -a
+  410  docker ri
+  411  clear
+  412  docker images
+  413  docker rmi ubuntu jenkins
+  414  clear
+  415  ls
+  416  docker image
+  417  docker images
+  418  clear
+  419  ls
+  420  docker info
+  421  clear
+  422  cd /var/lib/docker
+  423  ls
+  424  cd overlay2
+  425  ls
+  426  cleat
+  427  clear
+  428  ls
+  429  du -sh
+  430  docker pull ubuntu
+  431  ls
+  432  clear
+  433  ls
+  434  docker inspect ubuntu
+  435  clear
+  436  docker inspect ubuntu
+  437  clear
+  438  ls
+  439  docker history ubuntu
+  440  docker images
+  441  clear
+  442  ls
+  443  du -h --max-depth=1
+  444  ls
+  445  cd 9880b6de42ab12913e878513ac97c714a0ea8858d0c19357912678ac30aa59e8
+  446  clear
+  447  ls
+  448  cd diff
+  449  ls
+  450  tree
+  451  ls
+  452  clea
+  453  clear
+  454  ls
+  455  cd ..
+  456  ls
+  457  cd ..
+  458  ls
+  459  cd 3b6228d7d87272e5bf9556adfc65b4bad477769318737be007eeadb19d24ea6d
+  460  sl
+  461  clear
+  462  ls
+  463  cd diff/
+  464  ls
+  465  cd run/
+  466  ls
+  467  cd ../..
+  468  ls
+  469  clear
+  470  ls
+  471  cd ..
+  472  ls
+  473  df -kh
+  474  clear
+  475  ls
+  476  watch ls
+  477  ls -lrt
+  478  du -h --max-depth=1
+  479  ls
+  480  df -kh
+  481  ps -eaf | grep dockerr
+  482  ps -eaf | grep docker
+  483  clear
+  484  ls
+  485  cd /var/lib/docker/overlay2/123ef297c78ec699d04311abc11705eedb7436c782d1e250ea794505cc0c5552/merged
+  486  ls
+  487  cd ..
+  488  ls
+  489  clear
+  490  ls
+  491  cd ..
+  492  ls
+  493  pwd
+  494  find . -name rajesh*
+  495  watch find . -name rajesh*
+  496  cd ./123ef297c78ec699d04311abc11705eedb7436c782d1e250ea794505cc0c5552/diff
+  497  ls
+  498  clear
+  499  ls
+  500  cd tmp/
+  501  ls
+  502  cd ..
+  503  ls
+  504  cd ..
+  505  ls
+  506  clear
+  507  docker
+  508  clear
+=============================================
+How to create a images?
+
+Easy way  - Using Container
+
+ 527  docker ps -a
+  528  cd -
+  529  docker commit -m"demo" -a"Rajesh kumar" a36ca3f78e55
+  530  docker images
+  531  docker commit -m"demo" -a"Rajesh kumar" a36ca3f78e55 ub-rajesh
+  532  docker images
+  533  docker rmi 27d66dd5b3dd
+  534  clear
+  535  docker images
+  536  docker history ubuntu
+  537  docker history ub-rajesh
+  538  docker inspect ub-rajesh
+  539  clear
+  540  ls
+  541  docker ps
+  542  docker ps -a
+  543  docker rm a36ca3f78e55
+  544  clear
+  545  ls
+  546  ls
+  547* docker history ub-rajes
+  548  docker inspect ub-rajesh
+
+
+583  dcoker ps -a
+  584  docker ps -a
+  585  docker images
+  586  docker run -itd ub-rajesh
+  587  ls
+  588  clear
+  589  docker ps
+  590  clear
+  591  docker ps
+  592  docker attach e67103763374
+  593  ls
+  594  docker ps
+  595  docker commit -m"ur req" -a"Rajesh" e67103763374 rjjj
+  596  ls
+  597  find . -name rajesh*
+  598  docker ps
+  599  docker stop e67103763374
+  600  docker rm e67103763374
+  601  find . -name rajesh*
+
+
+Automated way - DONE by docker using dockerfile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
