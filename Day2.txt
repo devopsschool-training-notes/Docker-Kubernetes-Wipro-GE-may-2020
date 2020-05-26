@@ -281,19 +281,51 @@ Easy way  - Using Container
 
 
 Automated way - DONE by docker using dockerfile
+====================================================
+What is dockerfile?
+	- its a file
+	- contains instructions
+
+
+Rules of Dockerfile
+---------------------
+- Each line in a dockerfile create one layer.
+			Layer - meta layer
+				Data layer 
+- Each layer gets created based on Base Images.
+===============================================	
+
+
+FROM ubuntu
+MAINTAINER Rajesh Kumar
+RUN apt-get update
+RUN apt-get install git -y
+
+
+RUN apt-get install ntp
+#RUN apt-get install apache2 -y --no-install-recommends
+
+6 
+44
+
+
+FROM ubuntu
+MAINTAINER Rajesh Kumar
+RUN touch /opt/devopsschool1.com
+RUN touch /opt/devopsschool2.com
+RUN touch /opt/devopsschool3.com
 
 
 
+ 643  vi doc1
+  644  docker build -f doc1 -t sec .
+  645  cd /var/lib/docker/
+  646  clear
 
-
-
-
-
-
-
-
-
-
+  616  ls
+  617  vi dockerfile
+  618  docker build -t rrr .
+  619  clear
 
 
 
