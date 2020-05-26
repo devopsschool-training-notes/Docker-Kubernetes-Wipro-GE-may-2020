@@ -1,0 +1,86 @@
+13.127.251.251
+=========================
+https://www.devopsschool.com/tutorial/docker/commands/
+
+ 333  touch devopsschool.txt
+  334  ls
+  335  docker cp devopsschool.txt be623f205689:/tmp
+  336  docker exec be623f205689 ls /tmp/
+  337  ls
+  338  rm -rf devopsschool.txt
+  339  ls
+  340  docker cp be623f205689:/tmp/devopsschool.txt .
+  341  ls
+  342  history
+
+
+diff
+---------
+	added
+	deleted
+	changed
+
+ 343  clear
+  344  docker help cp
+  345  docker help run
+  346  clear
+  347  ls
+  348  clear
+  349  ls
+  350  clear
+  351  docker ps
+  352  docker attach be623f205689
+  353  clear
+  354  ls
+  355  docker ps
+  356  docker diff be623f205689
+  357  clear
+  358  ls
+  359  docker ps
+  360  docker port be623f205689
+  361  docker run -d -p 8080:8080 jenkins
+  362  docker ps
+  363  docker port 93e5ae5a1e19
+  364  clear
+  365  docker ps
+  366  docker rename 93e5ae5a1e19 raj1
+  367  docker ps
+  368  docker run -itd --name=raj2 ubuntu
+  369  docker ps
+  370  history
+
+
+
+
+
+372  ls
+  373  clear
+  374  dcoker ps
+  375  docker ps
+  376  docker logs jenkins
+  377  docker logs 8ad54c9fe124
+  378  docker logs 93e5ae5a1e19
+  379  clear
+  380  docker ps
+  381  watch docker logs 8ad54c9fe124
+  382  docker stop 93e5ae5a1e19
+  383  docker logs 93e5ae5a1e19
+  384  docker ps
+  385  clear
+  386  docker ps
+  387  docker stats
+  388  docker stats 8ad54c9fe124
+  389  ps -eaf | grep docker
+  390  docker ps
+  391  clear
+  392  docker ps
+  393  docker top 8ad54c9fe124
+  394  docker events
+  395  history
+
+Assingment
+update	Update configuration of one or more containers
+wait	Block until one or more containers stop, then print their exit codes
+
+
+
