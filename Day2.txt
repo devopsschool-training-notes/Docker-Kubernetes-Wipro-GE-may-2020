@@ -303,7 +303,7 @@ RUN apt-get install git -y
 
 
 RUN apt-get install ntp
-#RUN apt-get install apache2 -y --no-install-recommends
+#RUN apt-get install -yq --no-install-recommends apache2
 
 6 
 44
@@ -314,7 +314,8 @@ MAINTAINER Rajesh Kumar
 RUN touch /opt/devopsschool1.com
 RUN touch /opt/devopsschool2.com
 RUN touch /opt/devopsschool3.com
-
+RUN apt-get update
+RUN apt-get install -yq --no-install-recommends apache2
 
 
  643  vi doc1
@@ -327,9 +328,67 @@ RUN touch /opt/devopsschool3.com
   618  docker build -t rrr .
   619  clear
 
+=================================================================================================
+=================================================================================================
+jenkins image
+==========================
+ - which port jenkins container running
+ - which env jenkins container has?
+ - which volume jenkins container has it?
+ - Which user jenkins container is running with
+=======================================
+Jenkins
+	openjdk:8-jdk
+			buildpack-deps:buster-scm
+				buildpack-deps:buster-curl
+						debian:buster
+							scratch
+
+FROM ubuntu
+MAINTAINER Rajesh
+ARG myname=rajesh
+ARG user=jenkins
+ENV JAVA_HOME=/opt/raju
+RUN apt-get update && apt-get install git -y
+VOLUME /opt/myvol
+COPY index.html /tmp
+RUN groupadd -g 1000 jenkins  \
+    && useradd -d /tmp/jenkins -u 1000 -g 1000 -m -s /bin/bash ${user}
+USER ${user}
+
+======================================
+How to share a Images?
+--------------------------------------------------------
+Tar ball
+- 
+  725  docker save -o fff.tar fff
+  726  ls
+  727  docker rmi fff
+  728  clear
+  729  docker images
+  730  ls
+  731  docker load -i fff.tar
+  732  docker images
+  733  tar -xv fff.tar
 
 
+using  Public Rpeo
 
+ 746  clear
+  747  docker login
+  748  dcoker images
+  749  docker images
+  750  docker push fff
+  751  docker tag fff devopsschools/ge
+  752  clear
+  753  docker images
+  754  docker push devopsschools/ge
+  755  docker tag fff devopsschools/ge:v1
+  756  docker images
+  757  docker push devopsschools/ge:v1
+
+
+Using Private Repo
 
 
 
