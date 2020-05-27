@@ -1,0 +1,227 @@
+Master
+	API Server -> POD --> Container -> Image -> GoogleRegistry
+	Ectd -> POD --> Container -> Image -> GoogleRegistry
+	Controller Mgmr -> POD --> Container -> Image -> GoogleRegistry
+	Schedular -> POD --> Container -> Image -> GoogleRegistry
+
+	Kubelet
+	Docker
+	Kubeproxy -> POD --> Container -> Image -> GoogleRegistry
+Worker
+	Kubelet
+	Kubeproxy -> POD --> Container -> Image -> GoogleRegistry
+	Docker
+
+
+Workstation
+	Kubectl
+===============================================
+How to setup K8S?
+----------------------
+ONE NODE CLUSTOR
+===========================
+	API Server -> POD --> Container -> Image -> GoogleRegistry
+	Ectd -> POD --> Container -> Image -> GoogleRegistry
+	Controller Mgmr -> POD --> Container -> Image -> GoogleRegistry
+	Schedular -> POD --> Container -> Image -> GoogleRegistry
+
+	Kubelet
+	Docker
+	Kubeproxy -> POD --> Container -> Image -> GoogleRegistry
+==========================================================
+MINIKUBE
+
+
+			CLOUD				NON CLOUD
+CTRL OVER MASTER	KOPS				kubeadm
+NO CTRL OVER MASTER	EKS
+			AKS
+			GKE
+
+HARDWY - 
+https://github.com/kelseyhightower/kubernetes-the-hard-way
+======================================================
+
+35.154.170.132
+
+Step 1- https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+
+Step 2 - https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
+
+
+
+[root@ip-172-31-9-227 ec2-user]# kubeadm init --ignore-preflight-errors all
+W0527 09:10:47.564272   11166 configset.go:202] WARNING: kubeadm cannot validate                 component configs for API groups [kubelet.config.k8s.io kubeproxy.config.k8s.io                ]
+[init] Using Kubernetes version: v1.18.3
+[preflight] Running pre-flight checks
+        [WARNING IsDockerSystemdCheck]: detected "cgroupfs" as the Docker cgroup                 driver. The recommended driver is "systemd". Please follow the guide at https:/                /kubernetes.io/docs/setup/cri/
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your inte                rnet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config                 images pull'
+[kubelet-start] Writing kubelet environment file with flags to file "/var/lib/ku                belet/kubeadm-flags.env"
+[kubelet-start] Writing kubelet configuration to file "/var/lib/kubelet/config.y                aml"
+[kubelet-start] Starting the kubelet
+[certs] Using certificateDir folder "/etc/kubernetes/pki"
+[certs] Generating "ca" certificate and key
+[certs] Generating "apiserver" certificate and key
+[certs] apiserver serving cert is signed for DNS names [ip-172-31-9-227.ap-south                -1.compute.internal kubernetes kubernetes.default kubernetes.default.svc kuberne                tes.default.svc.cluster.local] and IPs [10.96.0.1 172.31.9.227]
+[certs] Generating "apiserver-kubelet-client" certificate and key
+[certs] Generating "front-proxy-ca" certificate and key
+[certs] Generating "front-proxy-client" certificate and key
+[certs] Generating "etcd/ca" certificate and key
+[certs] Generating "etcd/server" certificate and key
+[certs] etcd/server serving cert is signed for DNS names [ip-172-31-9-227.ap-sou                th-1.compute.internal localhost] and IPs [172.31.9.227 127.0.0.1 ::1]
+[certs] Generating "etcd/peer" certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [ip-172-31-9-227.ap-south                -1.compute.internal localhost] and IPs [172.31.9.227 127.0.0.1 ::1]
+[certs] Generating "etcd/healthcheck-client" certificate and key
+[certs] Generating "apiserver-etcd-client" certificate and key
+[certs] Generating "sa" key and public key
+[kubeconfig] Using kubeconfig folder "/etc/kubernetes"
+[kubeconfig] Writing "admin.conf" kubeconfig file
+[kubeconfig] Writing "kubelet.conf" kubeconfig file
+[kubeconfig] Writing "controller-manager.conf" kubeconfig file
+[kubeconfig] Writing "scheduler.conf" kubeconfig file
+[control-plane] Using manifest folder "/etc/kubernetes/manifests"
+[control-plane] Creating static Pod manifest for "kube-apiserver"
+[control-plane] Creating static Pod manifest for "kube-controller-manager"
+W0527 09:11:24.570113   11166 manifests.go:225] the default kube-apiserver autho                rization-mode is "Node,RBAC"; using "Node,RBAC"
+[control-plane] Creating static Pod manifest for "kube-scheduler"
+W0527 09:11:24.571509   11166 manifests.go:225] the default kube-apiserver autho                rization-mode is "Node,RBAC"; using "Node,RBAC"
+[etcd] Creating static Pod manifest for local etcd in "/etc/kubernetes/manifests                "
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as sta                tic Pods from directory "/etc/kubernetes/manifests". This can take up to 4m0s
+[apiclient] All control plane components are healthy after 15.002508 seconds
+[upload-config] Storing the configuration used in ConfigMap "kubeadm-config" in                 the "kube-system" Namespace
+[kubelet] Creating a ConfigMap "kubelet-config-1.18" in namespace kube-system wi                th the configuration for the kubelets in the cluster
+[upload-certs] Skipping phase. Please see --upload-certs
+[mark-control-plane] Marking the node ip-172-31-9-227.ap-south-1.compute.interna                l as control-plane by adding the label "node-role.kubernetes.io/master=''"
+[mark-control-plane] Marking the node ip-172-31-9-227.ap-south-1.compute.interna                l as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedu                le]
+[bootstrap-token] Using token: g6ukaf.52kdveu31g1x8mb1
+[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Rol                es
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to get no                des
+[bootstrap-token] configured RBAC rules to allow Node Bootstrap tokens to post C                SRs in order for nodes to get long term certificate credentials
+[bootstrap-token] configured RBAC rules to allow the csrapprover controller auto                matically approve CSRs from a Node Bootstrap Token
+[bootstrap-token] configured RBAC rules to allow certificate rotation for all no                de client certificates in the cluster
+[bootstrap-token] Creating the "cluster-info" ConfigMap in the "kube-public" nam                espace
+[kubelet-finalize] Updating "/etc/kubernetes/kubelet.conf" to point to a rotatab                le kubelet client certificate and key
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as                 root:
+
+kubeadm join 172.31.9.227:6443 --token g6ukaf.52kdveu31g1x8mb1 \
+    --discovery-token-ca-cert-hash sha256:528f0e13d7279e8a59ef19d570050302b3ba1b                4849782aecaf9fbc496fb4b458
+[root@ip-172-31-9-227 ec2-user]#
+
+
+
+=======================================================================
+=======================================================================
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+######
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+
+
+Then you can join any number of worker nodes by running the following on each as                 root:
+
+kubeadm join 172.31.9.227:6443 --token g6ukaf.52kdveu31g1x8mb1 \
+    --discovery-token-ca-cert-hash sha256:528f0e13d7279e8a59ef19d570050302b3ba1b                4849782aecaf9fbc496fb4b458
+
+================================================================
+================================================================
+Workstation
+	Kubectl --> config
+		  ~/.kube/config
+		  CURR_DIR/.kube/config
+		  KUBECONFIG===path (env)
+
+	What would be a content of config?
+	- API SERVER URL 
+	- USERNAME
+ 	- Key and Cert
+
+	Skelaton of config"
+----------------------------------------------------------
+	Clustor(S)
+		Clustor1
+		Clustor2
+		Clustor3
+	User(S)
+		User1
+		User2
+		User3
+	Context(S)
+		Context 1 = Clustor1 + User2
+		Context 2 = Clustor2 + User1
+		Context 3 = Clustor3 + User3
+	Curr-Context
+		Context 1	
+
+
+================================================
+Setting up a worker
+==========================
+3.7.45.227
+
+
+Bhargav Banala		13.232.138.234
+prashant kumar		13.127.110.160
+Lokesh Yerrabothula	13.127.0.104
+Dileep G S		15.206.90.228
+Paridhi Nahar		13.126.157.163
+Sidharth Bisaria	13.232.183.182
+Avik Bhattacharya	52.66.240.151
+Sheetal R Powar		13.235.81.36
+Mahesh Bhuwanagiri	3.7.68.1
+Prasad Mutalikdesai	13.127.129.133
+Mahesh P		52.66.87.254
+Abhishek Singh		13.233.32.136
+Mary Elizabeth K J	13.235.67.172
+Bhavani Shankar G	15.206.147.195
+Swagat Panigrahi	15.206.164.112
+Nishant Kumar Singh	52.66.102.17
+Ayush Soni		13.233.105.0
+Maninder Singh		13.233.49.227
+Depak George Sathyasandan	35.154.117.75
+Dhanendra Sahu			13.126.85.131
+B V Arun ragavan		13.233.139.254
+Raghavendra Gubba		13.126.158.221
+Shammi Shetty			13.233.152.235
+Soumyarka Chatterjee	13.232.38.246
+Amarnath Reddy Chavva		13.232.22.180
+Anshuman 			13.235.75.101
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
