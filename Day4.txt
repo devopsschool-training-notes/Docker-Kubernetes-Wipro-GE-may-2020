@@ -1,0 +1,177 @@
+WORKSTAtiON - 13.233.77.77
+ec2-user
+
+# DO NT DO SUDO 
+
+
+
+Namespace
+POD
+RC
+Deployment
+======================
+
+  22  kubectl get nodes
+   23  watch kubeget nodes
+   24  watch kubectl nodes
+   25  watch kubectl get nodes
+   26  clear
+   27  kubectl
+   28  clear
+   29  kubectl
+   30  clear
+   31  kubectl
+   32  clear
+   33  kubectl cluster-info
+   34  kubectl
+   35  kubectl config
+   36  kubectl config view
+   37  kubectl config set-cluster ?
+   38  kubectl config set-cluster -h
+   39  clear
+   40  kubectl
+   41  kubectl api-resources
+   42  kubectl api-resources | wc -l
+   43  clear
+   44  kubectl
+   45  kubectl api-versions
+   46  kubectl api-resources
+   47  kubectl api-versions
+   48  kubectl api-resources
+   49  clear
+====================================================================
+C R U D
+
+Create Read Update Delete
+
+Create 
+	CMD
+		create
+	YAML
+		create
+Read 
+	CMD
+		get
+		describe 
+	YAML
+		get
+Update 
+	CMD
+		edit
+	YAML
+		edit
+		apply
+Delete
+	CMD
+		delete
+	YAML
+		delete
+===========================================
+Namespace
+
+
+ 56  kubectl api-resources
+   57  clear
+   58  kubectl create -h
+   59  kubectl create namespace -h
+   60  clear
+   61  kubectl get ns
+   62  kubectl create ns dev
+   63  kubectl create ns rajesh
+   64  kubectl get ns
+   65  kubectl edit ns dev
+   66  kubectl delete ns dev
+   67  kubectl get ns
+   68  clear
+   69  kubectl get ns
+   70  kubectl describe ns rajesh
+   71  history
+
+POD
+=======================
+	Container -> Image 
+		- port
+		- env
+
+		
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80
+
+----------------------------
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type     Reason            Age                From               Message
+  ----     ------            ----               ----               -------
+  Warning  FailedScheduling  30s (x2 over 30s)  default-scheduler  0/2 nodes are available: 1 node(s) had taint {node-role.kubernetes.io/master: }, that the pod didn't tolerate, 1 node(s) had taint {node.kubernetes.io/unreachable: }, that the pod didn't tolerate.
+[ec2-user@ip-172-31-9-227 rajesh]$ kubectl get pod
+
+=========================
+E0528 04:51:50.803272    1774 summary_sys_containers.go:47] Failed to get system container stats for "/user.slice/user-1000.slice/session-1.scope": failed to get cgroup stats for "/user.slice/user-1000.slice/session-1.scope": failed to get container info for "/user.slice/user-1000.slice/session-1.scope": unknown container "/user.slice/user-1000.slice/session-1.scope"
+I0528 04:52:00.803556    1774 kubelet_node_status.go:294] Setting node annotation to enable volume controller attach/detach
+E0528 04:52:00.837275    1774 summary_sys_containers.go:47] Failed to get system container stats for "/user.slice/user-1000.slice/session-1.scope": failed to get cgroup stats for "/user.slice/user-1000.slice/session-1.scope": failed to get container info for "/user.slice/user-1000.slice/session-1.scope": unknown container "/user.slice/user-1000.slice/session-1.scope"
+
+  92  vi pod.yaml
+   93  kubectl create -f pod.yaml
+   94  kubectl get pod
+   95  kubectl describe pod hello-pod
+   96  kubectl get pod
+   97  kubectl get nodes
+   98  clear
+   99  kubectl get pods
+  100  kubectl describe pod hello-pod
+  101  kubectl get pods
+  102  kubectl describe pod hello-pod
+  103  clear
+  104  ls
+  105  kubectl get pids
+  106  kubectl get pods
+  107  kubectl describe pods hello-pod
+  108  clea
+  109  cleAR
+  110  LS
+  111  clear
+  112  ls
+  113  clear
+  114  kubectl get pods
+  115  kubectl edit pod hello-pod
+  116  kubectl get pods
+  117  kubectl get pods -o wide
+  118  kubectl get pods -o wide --show-labels
+  119  vi pod.yaml
+  120  kubectl apply -f pod.yaml
+  121  kubectl get pods -o wide --show-labels
+  122  clear
+  123  ls
+  124  kubectl create -f pod.yaml
+  125  kubectl get pods
+  126  kubectl get ns
+  127  kubectl create -f pod.yaml -n=rajesh
+  128  kubectl get ns
+  129  kubectl get pods
+  130  kubectl get pods -n=rajesh
+  131  kubectl get ns
+  132  kubectl get pods --all-namespaces
+  133  watch kubectl get pods --all-namespaces
+  134  clear
+  135  ls
+  136  kubectl get pods
+  137  kubectl get ns
+  138  kubectl get pods -n=kube-system
+==========================================================
+How to use PODS?
+How to learn a field of YAML for each resources????
+
+
+
+
+
