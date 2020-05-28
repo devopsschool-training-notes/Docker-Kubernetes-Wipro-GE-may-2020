@@ -226,6 +226,89 @@ How to learn a field of YAML for each resources????
   210  kubectl explain namespace
   211  kubectl explain namespace.metadata
 
+13.233.137.191
+kubeadm join 172.31.9.227:6443 --token g6ukaf.52kdveu31g1x8mb1 \
+    --discovery-token-ca-cert-hash sha256:528f0e13d7279e8a59ef19d570050302b3ba1b                4849782aecaf9fbc496fb4b458
+======================================================
+Replication Controller
+=============================
+Replication - 1 to many
+Controller - Actual to Desire
+================================
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctr
+        image: scmgalaxy/nginx-devopsschoolv1
+        ports:
+        - containerPort: 80
+
+ 1010  clear
+ 1011  kubectl explain rc
+ 1012  kubectl explain rc.spec
+ 1013  kubectl explain rc.spec.spec.
+ 1014  kubectl explain rc.spec.spec
+ 1015  kubectl explain rc.spec.templae.spec
+ 1016  kubectl explain rc.spec.template.spec
+ 1017  clear
+ 1018  ls
+ 1019  vi rc.yaml
+ 1020  ls
+ 1021  kubectl create -f rc.yaml -n=rajesh
+ 1022  kubectl get rc -n=rajesh
+ 1023  kubectl get pod -n=rajesh
+ 1024  kubectl edit rc hello-rc -n=rajesh
+ 1025  kubectl get pod -n=rajesh
+ 1026  clear
+ 1027  ls
+ 1028  vi rc.yaml
+ 1029  kubectl create -f rc.yaml -n=rajesh
+ 1030  kubectl apply -f rc.yaml -n=rajesh
+ 1031  kubectl get pod -n=rajesh
+ 1032  kubectl
+ 1033  kubectl scale -h
+ 1034  clear
+ 1035  kubectl scale -h
+ 1036  kubectl scale --replicas=10 -f rc.yaml -n=rajesh
+ 1037  kubectl get pod -n=rajesh
+ 1038  clear
+ 1039  kubectl get pod -n=rajesh
+ 1040  kubectl scale --replicas=100\ -f rc.yaml -n=rajesh
+ 1041  kubectl scale --replicas=100 -f rc.yaml -n=rajesh
+ 1042  kubectl get pod -n=rajesh
+ 1043  kubectl get nodes
+ 1044  kubectl get pod -n=rajesh
+ 1045  watch kubectl get pod -n=rajesh
+ 1046  kubectl get pod -n=rajesh
+ 1047  clear
+ 1048  kubectl scale --replicas=2 -f rc.yaml -n=rajesh
+ 1049  kubectl get pod -n=rajesh
+ 1050  watch kubectl get pod -n=rajesh
+ 1051  clear
+ 1052  kubectl get pod -n=rajesh
+ 1053  kubectl delete pod hello-rc-8nvnw -n=rajesh
+ 1054  kubectl get pod -n=rajesh
+ 1055  history
+
+
+
+
+
+
+
+
+
+
 
 
 
