@@ -169,7 +169,62 @@ E0528 04:52:00.837275    1774 summary_sys_containers.go:47] Failed to get system
   138  kubectl get pods -n=kube-system
 ==========================================================
 How to use PODS?
+- logs
+- attach
+- exec
+- cp
+
+ 178  vi jenkins.yaml
+  179  kubectl create -f jenkins.yaml -n=rajesh
+  180  kubectl get pods -n=rajesh
+  181  kubectl get logs jenkins -n=rajesh
+  182  kubectl logs jenkins -n=rajesh
+  183  clear
+  184  kubectl exec -it  jenkins /bin/bash -n=rajesh
+  185  kubectl attach jenkins -n=rajesh
+  186* kubectl g
+  187  clear
+  188  ls
+  189  kubectl get pods -n=rajesh
+  190  ls
+  191  kubectl cp -h
+  192  kubectl get pods -n=rajesh
+  193  ls
+  194  clear
+  195  ls
+  196  kubectl cp *.yaml jenkins:/tmp/ -n=rajesh
+  197  kubectl cp pod.yaml  jenkins:/tmp/ -n=rajesh
+  198  kubectl exec jenkins ls /tmp -n=rajesh
+
+
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins
+  labels:
+    app: webserver1
+spec:
+  containers:
+  - name: jenkins
+    image: jenkins
+    ports:
+    - containerPort: 8080
+
+
+- 
 How to learn a field of YAML for each resources????
+
+ 203  kubectl explain
+  204  kubectl api-resources
+  205  kubectl explain pods
+  206  kubectl explain pods.spec
+  207  kubectl explain pods.spec.containers
+  208  kubectl explain namespace
+  209  kubectl explain namespace.spec
+  210  kubectl explain namespace
+  211  kubectl explain namespace.metadata
 
 
 
