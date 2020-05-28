@@ -362,11 +362,114 @@ kubectl scale --replicas=5 deploy/my-dep -n=rajesh
  1118  kubectl delete -f dep1.yaml -n=rajesh
  1119  kubectl get pods -n=rajesh
  1120  clear
+===================================================
+===================================================
+Versioning
+Rollout
+Rollback
+==================================================
+==================================================
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+
+  history     View rollout history
+
+  pause       Mark the provided resource as paused
+  restart     Restart a resource
+  resume      Resume a paused resource
+  status      Show the status of the rollout
+
+  undo        Undo a previous rollout
+
+kubectl scale --replicas=20 deploy/my-dep -n=rajesh
+
+kubectl apply -f dep1.yaml -n=rajesh
+
+kubectl rollout history deploy my-dep -n=rajesh
+
+kubectl rollout status deploy my-dep -n=rajesh
+kubectl rollout pause deploy my-dep -n=rajesh
+kubectl rollout status deploy my-dep -n=rajesh
+kubectl rollout resume deploy my-dep -n=rajesh
+kubectl rollout status deploy my-dep -n=rajesh
+kubectl rollout restart deploy my-dep -n=rajesh
+kubectl rollout status deploy my-dep -n=rajesh
+
+kubectl rollout history deploy my-dep -n=rajesh
 
 
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+
+100 POD V1
+25 POD V2
+25 POD v1
+25 POD v2
+25 POD V1
 
 
+kubectl rollout history deploy my-dep -n=rajesh
+kubectl rollout undo deploy my-dep -n=rajesh --to-revision=1
 
+
+ 1199  kubectl get deploy -n=rajesh
+ 1200  kubectl rollout history deploy my-dep -n=rajesh
+ 1201  clear
+ 1202  ls
+ 1203  vi dep1.yaml
+ 1204  kubectl scale --replicas=20 deploy/my-dep -n=rajesh
+ 1205  kubectl get deploy -n=rajesh
+ 1206  kubectl rollout status deploy my-dep -n=rajesh
+ 1207  kubectl get deploy -n=rajesh
+ 1208  kubectl rollout history deploy my-dep -n=rajesh
+ 1209  kubectl apply -f dep1.yaml -n=rajesh
+ 1210  kubectl rollout status deploy my-dep -n=rajesh
+ 1211  kubectl get deploy -n=rajesh
+ 1212  kubectl delete -f dep1.yaml -n=rajesh
+ 1213  vi dep1.yaml
+ 1214  kubectl get deploy -n=rajesh
+ 1215  vi dep1.yaml
+ 1216  kubectl get deploy -n=rajesh
+ 1217  vi dep1.yaml
+ 1218  kubectl rollout history deploy my-dep -n=rajesh
+ 1219  kubectl apply -f dep1.yaml -n=rajesh
+ 1220   kubectl rollout history deploy my-dep -n=rajesh
+ 1221  kubectl rollout status deploy my-dep -n=rajesh
+ 1222  kubectl rollout pause deploy my-dep -n=rajesh
+ 1223  kubectl rollout status deploy my-dep -n=rajesh
+ 1224  kubectl rollout pause deploy my-dep -n=rajesh
+ 1225  kubectl rollout resume deploy my-dep -n=rajesh
+ 1226  kubectl rollout restart deploy my-dep -n=rajesh
+ 1227  kubectl rollout status deploy my-dep -n=rajesh
+ 1228  kubectl rollout history deploy my-dep -n=rajesh
+ 1229  kubectl get pods -n=rajesh
+ 1230  kubectl get pods -n=rajesh -o wide
+ 1231  curl http://10.36.0.18
+ 1232  clear
+ 1233  kubectl rollout status deploy my-dep -n=rajesh
+ 1234  ls
+ 1235  more dep1.yaml
+ 1236  clear
+ 1237  kubectl rollout undo -h
+ 1238  clear
+ 1239  kubectl rollout history deploy my-dep -n=rajesh
+ 1240  kubectl rollout undo deploy my-dep -n=rajesh --to-revision=1
+ 1241  kubectl rollout status deploy my-dep -n=rajesh
+ 1242  kubectl get pods -n=rajesh -o wide
+ 1243  curl http://10.39.0.25
+ 1244  clear
+
+
+1 10 - v1
+2 20 - v2 - 10 V2 10V1 
+==========================
+20 Image v2
+
+
+WOKRER _ 13.233.157.169
 
 
 
