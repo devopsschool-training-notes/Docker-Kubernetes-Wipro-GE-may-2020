@@ -299,11 +299,69 @@ spec:
  1053  kubectl delete pod hello-rc-8nvnw -n=rajesh
  1054  kubectl get pod -n=rajesh
  1055  history
+====================================================================
+====================================================================
+Deployment
+-------------------------
+Replication
+Controller
+Versioning
+Rollout
+Rollback
 
 
 
+kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+kubectl scale --replicas=5 deploy/my-dep -n=rajesh
 
-
+ 1073  kubectl create
+ 1074  kubectl create deployment -h
+ 1075  clear
+ 1076  kubectl get pods -n=rajesh
+ 1077  kubectl delete rc hello-rc
+ 1078  kubectl delete rc hello-rc -n=rajesh
+ 1079  kubectl get pods -n=rajesh
+ 1080  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 -n=rajesh
+ 1081  kubectl get pods -n=rajesh
+ 1082  clear
+ 1083  ls
+ 1084  kubectl get pods -n=rajesh
+ 1085  kubectl get deploy -n=rajesh
+ 1086  kubectl edit deploy -n=rajesh
+ 1087  kubectl get pods -n=rajesh
+ 1088  clear
+ 1089  kubectl scale -h
+ 1090  clear
+ 1091  kubectl get pods -n=rajesh
+ 1092  kubectl scale --replicas=5 deploy/my-dep -n=rajesh
+ 1093  kubectl get pods -n=rajesh
+ 1094  clear
+ 1095  kubectl get pods -n=rajesh
+ 1096  ls
+ 1097  kubectl get deploy -n=rajesh
+ 1098  kubectl get deploy my-dep -n=rajesh
+ 1099  kubectl get deploy my-dep -o yaml -n=rajesh
+ 1100  kubectl get deploy my-dep -o yaml --export -n=rajesh
+ 1101  clear
+ 1102  kubectl get deploy my-dep -o yaml --export -n=rajesh >> dep1.yaml
+ 1103  ls
+ 1104  more dep1.yaml
+ 1105  vi dep1.yaml
+ 1106  kubectl create -f dep1.yaml -n=rajesh
+ 1107  kubectl get deploy -n=rajesh
+ 1108  kubectl delete deploy my-dep
+ 1109  kubectl delete deploy my-dep -n=rajesh
+ 1110  kubectl delete deploy my-dep
+ 1111  kubectl get deploy -n=rajesh
+ 1112  clear
+ 1113  ls
+ 1114  kubectl get pods -n=rajesh
+ 1115  kubectl delete pods mydep2-76767c79f-74l4c -n=rajesh
+ 1116  kubectl get pods -n=rajesh
+ 1117  kubectl delete -f dep1.yaml
+ 1118  kubectl delete -f dep1.yaml -n=rajesh
+ 1119  kubectl get pods -n=rajesh
+ 1120  clear
 
 
 
