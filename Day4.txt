@@ -1,4 +1,4 @@
-WORKSTAtiON - 13.233.77.77
+WORKSTAtiON -  13.127.16.233
 ec2-user
 
 # DO NT DO SUDO 
