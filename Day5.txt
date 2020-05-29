@@ -1,0 +1,112 @@
+TYPES OF services
+==============================================
+	ClustorIP
+	NodePort
+		ClustorIP + Port Forward
+	Load Balancer
+		NodePort + ClustorIP + Port Forward
+
+Workstation
+13.232.49.59
+============================
+
+Verification
+=======================
+13.233.120.69
+
+
+kubectl create service clusterip my-cs --tcp=5678:80
+
+ 1014  kubectl get svc
+ 1015  kubectl get svc -n=rajesh
+ 1016  kubectl create svc -h
+ 1017  kubectl create svc clusterip -h
+ 1018  clear
+ 1019  kubectl create service clusterip my-cs --tcp=5678:80 -n=rajesh
+ 1020  kubectl get svc -n=rajesh
+ 1021  ping 10.110.88.243
+ 1022  clear
+ 1023  ls
+ 1024  kubectl get svc -n=rajesh
+ 1025  kubectl describe svc my-cs -n=rajesh
+ 1026  kubectl get pods -n=rajesh
+ 1027  kubectl get pods -n=rajesh -o wide
+ 1028  curl http://10.36.0.82
+ 1029  kubectl get pods -n=rajesh -o wide --showlabels
+ 1030  clear
+ 1031  kubectl get pods -n=rajesh -o wide --showlabels
+ 1032  kubectl get pods -n=rajesh -o wide --showlables
+ 1033  kubectl get pods -n=rajesh -o wide --show-labels
+ 1034  kubectl describe svc my-cs -n=rajesh
+ 1035  kubectl edit pod hello-pod -n=rajesh
+ 1036  kubectl describe svc my-cs -n=rajesh
+ 1037  curl http://10.110.88.243:5678
+ 1038  ls
+ 1039  vi pod.yaml
+ 1040  cp pod.yaml pod1.yaml
+ 1041  vi pod1.yaml
+ 1042  cp pod.yaml pod2.yaml
+ 1043  vi pod2.yaml
+ 1044  kubeclt create -f pod2.yaml -n=rajesh
+ 1045  kubectl create -f pod2.yaml -n=rajesh
+ 1046  vi pod2.yaml
+ 1047  vi pod1.yaml
+ 1048  kubeclt create -f pod2.yaml -n=rajesh
+ 1049  kubectl create -f pod2.yaml -n=rajesh
+ 1050  kubectl create -f pod1.yaml -n=rajesh
+ 1051  clear
+ 1052  kubectl get pod -n=rajesh
+ 1053  kubectl get pod -n=rajesh -o wide --show-labesl
+ 1054  kubectl get pod -n=rajesh -o wide --show-labels
+ 1055  kubectl describe svc my-cs -n=rajesh
+ 1056  kubectl edit svc my-cs -n=rajesh
+ 1057  kubectl describe svc my-cs -n=rajesh
+ 1058  kubectl edit svc my-cs -n=rajesh
+ 1059  kubectl describe svc my-cs -n=rajesh
+ 1060  kubectl get pod -n=rajesh -o wide --show-labels
+ 1061  ping             app=webserver2
+ 1062  Annotati
+===============================
+Node				POD
+sdsds				http://10.110.88.243:5678/
+
+kubectl create service nodeport my-nodeportsvc --tcp=5678:80
+
+
+
+
+
+
+ 1072  clear
+ 1073  kubectl create service nodeport my-nodeportsvc --tcp=5678:80 -n=rajesh
+ 1074  kubectl describe svc my-cs -n=rajesh
+ 1075  kubectl get svc -n=rajesh
+ 1076  kubectl describe svc my-nodeportsvc -n=rajesh
+ 1077  clear
+ 1078  ifconfig
+ 1079  kubectl describe svc my-nodeportsvc -n=rajesh
+ 1080  kubectl get svc -n=rajesh
+ 1081  kubectl describe svc my-nodeportsvc -n=rajesh -
+ 1082  kubectl describe svc my-nodeportsvc -n=rajesh
+ 1083  kubectl get pods -n=rajesh --show-labels
+ 1084  kubectl edit svc my-nodeportsvc -n=rajesh
+ 1085  kubectl get pods -n=rajesh --show-labels
+ 1086  kubectl describe svc my-nodeportsvc -n=rajesh
+ 1087  kubectl edit svc my-nodeportsvc -n=rajesh
+ 1088  kubectl describe svc my-nodeportsvc -n=rajesh
+ 1089  kubectl get pods -n=rajesh --show-labels
+
+
+
+
+
+kubectl create service loadbalancer my-lbs --tcp=5678:80 -n=rajesh
+
+https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/
+
+https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/
+
+
+
+
+
