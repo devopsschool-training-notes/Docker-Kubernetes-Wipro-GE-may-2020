@@ -345,17 +345,256 @@ HELM
 
 
 
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
+
+helm install stable/tomcat --version 0.4.1
+
 
 RBAC
 ==============================
 ==============================
+Authentication and Authrization
+
+Authentication - How to get inside a system?
+- cert
+Authorization - What you are eligible in the system?
+- rbac
+
+
+Types of User
+--------------------
+normal user - like us
+service account - inter pod communication and auth.
+
+Type of role
+- role			- Scope Namespace
+- clustorole		- Scope Clusor 
+
+Type of Binding
+rolebinding
+clustorolebinding
+=====================================
+kubectl create sa tecnotree-sa
+kubectl get sa -A | grep tec
+
+
+=============================================================================
+=============================================================================
+QA
+=============================================================================
+Authentication and Authorization with K8s.
+
+Authentication
+    Certificates
+
+Authorization
+    ABAC
+    RBAC - Certificates to Authenticate
+           Roles to Authorize
+================================================
+TYPES of USERS
+    - NORMAL USERS - 
+          using certificates    
+          This use has no api resources 
+          For humen interaction with API Server         
+    - SERVICE ACCOUNT 
+          - Secret Tokens
+          - This can be created using api resources
+          - For KUBERNETES Control plane internal authentication and Auth.
+
+Types of roles on RBAC?
+    - Roles
+        - Limited to Namespace
+        - Humen
+        - rules
+    - clusterroles
+        - Scope to ClustorWIde.
+        - Clustor Releated Access.\
+            - Can add humen.
+        - rules
+            apiGroups
+            resourceNames
+            resources
+            verbs
+               - create
+                - get
+                - delete
+                - list
+                - update
+                - edit
+                - watch
+                - exec
+
+
+Demo 1 - 
+          Create a SERVice ACCOUNT    == ServiceAccount
+
+          Create clusterroles         == ClusterRole
+          Add SERVice ACCOUNT into clusterroles = ClusterRoleBinding
+
+kubectl create sa tecnotree-sa
+kubectl get sa -A | grep tec
+
+sa.yaml
+---------------
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tecnotree-admin
+
+kubectl create -f sa.yaml
+kubectl get sa -A | grep tec
+kubectl get secrets
 
 
 
 
-helm repo add stable https://kubernetes-charts.storage.googleapis.com
 
-helm install stable/tomcat --version 0.4.1
+kubectl help create clusterrole
+kubectl create clusterrole tecnotree-clusterroles1 --verb=get,list,watch --resource=pods
+kubectl get clusterrole
+kubectl describe clusterrole tecnotree-clusterroles1
+
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  namespace: default
+  name: tecnotree-clusterroles2
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["deployments", "replicasets", "pods"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
+
+
+
+kubectl create clusterrolebinding tecnotree-cr-binding --clusterrole=tecnotree-clusterroles2 --user=tecnotree-admin
+kubectl get clusterrolebinding
+kubectl get clusterrolebinding | grep tec
+
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: tecnotree-cr-binding3
+subjects:
+- kind: ServiceAccount
+  name: tecnotree-admin
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: tecnotree-clusterroles2
+  apiGroup: rbac.authorization.k8s.io
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tecnotree-cr-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: tecnotree-clusterroles2
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: tecnotree-admin
+
+
+=========================
+kubectl convert -f pod.yaml
+kubectl convert -f pod.yaml --local -o json
+kubectl convert -f . | kubectl create -f -
+
+
+--------------------------------
+subjects:
+- kind: User
+  name: example-user
+  apiGroup: rbac.authorization.k8s.io
+
+subjects.kinds CAN BE 
+          User
+          Group
+          ServiceAccount
+
+Demo 2 
+          Create a normal Account - NA
+          Create a roles = Role
+          Add Normal ACCOUNT into roles = RoleBinding
+
+
+      
+======USER At LAPTOP==================
+kubectl create namespace office
+
+openssl genrsa -out employee.key 2048
+
+openssl req -new -key employee.key -out employee.csr -subj "/CN=employee/O=bitnami"
+
+======ADMIN AT MASTER using root==================
+openssl x509 -req -in employee.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /home/ec2-user/tecnotree/employee.crt -days 500
+
+======USER At LAPTOP==================
+kubectl config set-credentials employee --client-certificate=/home/ec2-user/tecnotree/employee.crt  --client-key=/home/ec2-user/tecnotree/employee.key
+
+kubectl config set-context employee-context --cluster=kubernetes --namespace=office --user=employee
+
+kubectl --context=employee-context get pods
+
+==========================================
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  namespace: office
+  name: deployment-manager
+rules:
+- apiGroups: ["", "extensions", "apps"]
+  resources: ["deployments", "replicasets", "pods"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"] # You can also use ["*"]
+
+==================================
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: deployment-manager-binding
+  namespace: office
+subjects:
+- kind: User
+  name: employee
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: deployment-manager
+  apiGroup: ""
+
+============================
+$ kubectl --context=employee-context run nginx --image=nginx
+$ kubectl --context=employee-context get pods
+
+
+==============================================================================
+Notes- DONE
+
+
+Slides - https://www.devopsschool.com/slides/
+PDF - https://www.devopsschool.com/pdf/
+Tutorials - https://www.devopsschool.com/tutorial/
+Blogs - https://www.devopsschool.com/blog/
+Videos
+	- https://www.devopsschool.com/video/
+	- https://www.devopsschool.com/videos/
+	- https://www.youtube.com/TheDevOpsSchool
+Certification Dump and Quiz
+	https://www.devopsschool.com/lms/
+
+
+How to connect with me?
+http://rajeshkumar.xyz/
+
+
+How to get training cerificates?
+- https://www.devopscertification.co/
+
+
 
 
 
