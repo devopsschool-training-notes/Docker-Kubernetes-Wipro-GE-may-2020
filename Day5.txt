@@ -105,6 +105,158 @@ kubectl create service loadbalancer my-lbs --tcp=5678:80 -n=rajesh
 https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/
 
 https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/
+=========================================================
+=========================================================
+
+
+hostpath
+https://www.devopsschool.com/blog/persistentvolume-persistentvolumeclaim-volumes-using-hostpath/
+
+PV --> PVC --> Into POD --> Into Container.
+
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: hostpath
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvchostpath1
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+
+
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: task-pv-pod
+spec:
+  containers:
+    - name: task-pv-container
+      image: scmgalaxy/nginx-devopsschoolv1
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: pvchostpath
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: task-pv-pod
+spec:
+  containers:
+    - name: task-pv-container
+      image: scmgalaxy/nginx-devopsschoolv1
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: pvchostpath1
+
+nfs
+https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolumeclaim-using-nfs-volume-types/
+
+configmap vs secret
+https://www.devopsschool.com/blog/kubernetes-configmap-explained-using-example/
+
+
+
+
+
+
+
+
+
+ 1002  kubectl get pv
+ 1003  kubectl get pvc
+ 1004  kubectl
+ 1005  kubectl api-resources
+ 1006  clear
+ 1007  ls
+ 1008  cd rajesh/
+ 1009  ls
+ 1010  vi pv.yaml
+ 1011  kubectl create -f pv.yaml
+ 1012  kubectl get pvc
+ 1013  kubectl get pv
+ 1014  ls /tmp/devopsschool
+ 1015  df -kh
+ 1016  clear
+ 1017  ls
+ 1018  kubectl get pv
+ 1019  ls
+ 1020  vi pv.yaml
+ 1021  kubectl create -f pv.yaml
+ 1022  kubectl get pv
+ 1023  vi pvc.yaml
+ 1024  kubectl create -f pvc.yaml -n=rajesh
+ 1025  kubectl get pvc
+ 1026  kubectl get pvc -n=rajesh
+ 1027  clear
+ 1028  ls
+ 1029  vi pvc1.yaml
+ 1030  kubectl create -f pvc1.yaml -n=rajesh
+ 1031  kubectl get pvc -n=rajesh
+ 1032  kubectl get pv
+ 1033  clear
+ 1034  ks
+ 1035  ls
+ 1036  vi podpvc.yaml
+ 1037  kubectl create -f podpvc.yaml -n=rajesh
+ 1038  kubectl get pods -o wide -n=rajesh
+ 1039  kubectl exec -it task-pv-pod /bin/bash -n=rajesh
+ 1040  ls
+ 1041  kubectl delete -f podpvc.yaml -n=rajesh
+ 1042  kubectl create -f podpvc.yaml -n=rajesh
+ 1043  kubectl get pods -o wide -n=rajesh
+ 1044  kubectl exec -it task-pv-pod /bin/bash -n=rajesh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
