@@ -241,16 +241,121 @@ https://www.devopsschool.com/blog/kubernetes-configmap-explained-using-example/
  1043  kubectl get pods -o wide -n=rajesh
  1044  kubectl exec -it task-pv-pod /bin/bash -n=rajesh
 
+How to setup monitoring infra
+===================================================================
+Container ---> Cadvisor
+Pod - Heapster
+Node - Promethus
+Logs - Elastic Search
+
+-------------------
+GUI - Alert - Reporting - Dashboard
+--------------------------------------
+	- Kibana
+	- Grapana
+
+Registry
+MS policy
+Auto discover
+==============================
+==============================
+HELM
+==============================
+
+ 1052  wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
+ 1053  yum install wget -y
+ 1054  sudo yum install wget -y
+ 1055  clear
+ 1056  wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
+ 1057  ls
+ 1058  tar -zxvf helm-v3.2.1-linux-amd64.tar.gz
+ 1059  clear
+ 1060  ls
+ 1061  cd linux-amd64
+ 1062  ls
+ 1063  ./helm
+ 1064  clear
+ 1065  helm install stable/tomcat --version 0.4.1
+ 1066  echo $PATH
+ 1067  cp helm /usr/local/bin
+ 1068  sudo cp helm /usr/local/bin
+ 1069  helm install stable/tomcat --version 0.4.1
+ 1070  helm install stable/tomcat --version 0.4.1  --generate-name
+ 1071  helm repo update
+ 1072  helm repo add stable https://kubernetes-charts.storage.googleapis.com
+ 1073  helm install stable/tomcat --version 0.4.1
+ 1074  helm install stable/tomcat --version 0.4.1 --generate-name
+ 1075  kubectl get svc
+ 1076  kubectl get pods
+ 1077  helm
+ 1078  helm list
+ 1079  helm uninstall tomcat-1590746611
+ 1080  helm list
+ 1081  kbectl get pod
+ 1082  kubectl get pods
+ 1083  clear
+ 1084  ls
+ 1085  cd ..
+ 1086  ls
+ 1087  cd rajesh/
+ 1088  ls
+ 1089  clear
+ 1090  ls
+ 1091  helm
+ 1092  clear
+ 1093  helm create web
+ 1094  ks
+ 1095  ls
+ 1096  cd web/
+ 1097  clear
+ 1098  tree
+ 1099  yum install teree -y
+ 1100  clear
+ 1101  sudo yum install tree -y
+ 1102  clear
+ 1103  tree
+ 1104  ls
+ 1105  helm
+ 1106  helm show
+ 1107  helm show all
+ 1108  helm show chart
+ 1109  helm show chart -h
+ 1110  helm show chart stable/tomcat
+ 1111  cd
+ 1112  ls
+ 1113  ls -la
+ 1114  cd .cache
+ 1115  ls
+ 1116  cd helm/
+ 1117  ls
+ 1118  cd repository/
+ 1119  slc
+ 1120  clear
+ 1121  ls
+ 1122  tar -zxvf tomcat-0.4.1.tgz
+ 1123  ls
+ 1124  cd tomcat/
+ 1125  clear
+ 1126  tree
+ 1127  more values.yaml
+ 1128  clclear
+ 1129  clear
+ 1130  grep -R "externalPort" .
 
 
 
 
 
+RBAC
+==============================
+==============================
 
 
 
 
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
 
+helm install stable/tomcat --version 0.4.1
 
 
 
