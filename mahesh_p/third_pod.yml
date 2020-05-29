@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: third-pod
+  labels: 
+    app: webserver-first
+  namespace: mahesh-p
+spec:
+  containers:
+  - name: hello-ctr
+    image: jenkins
+    ports:
+    - containerPort: 8080
+    - containerPort: 50000

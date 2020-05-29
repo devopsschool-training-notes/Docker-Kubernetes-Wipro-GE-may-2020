@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sitpod
+  labels: 
+    app: webserver2
+spec:
+  containers:
+  - name: hello-system
+    image: nginx
+    ports:
+    - containerPort: 80

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc-somu
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world-somu
+    spec:
+      containers:
+      - name: hello-ctr-somu
+        image: scmgalaxy/nginx-devopsschoolv1
+        ports:
+        - containerPort: 80

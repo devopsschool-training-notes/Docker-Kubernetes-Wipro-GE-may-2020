@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dileepgs-new-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: dileepgs-test-nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+  - name: dileepgs-test-jenkins
+    image: jenkins
+    ports:
+    - containerPort: 8080
+

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-somu
+  labels:
+    app: webserver-somu
+spec:
+  containers:
+  - name: jenkins-somu
+    image: jenkins
+    ports:
+     - containerPort: 8080

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rcsid
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctrsid
+        image: scmgalaxy/nginx-devopsschoolv1
+        ports:
+        - containerPort: 80

@@ -1,0 +1,23 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+
+  name: jenkins-pod
+
+  labels: 
+
+    app: webserver
+
+spec:
+
+  containers:
+
+  - name: jenkins-ctr
+
+    image: jenkins
+
+    ports:
+
+    - containerPort: 81

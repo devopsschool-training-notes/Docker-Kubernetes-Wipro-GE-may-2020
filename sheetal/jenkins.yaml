@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sheetal-pod
+  labels:
+    app: webserver1
+spec:
+  containers:
+  - name: ctr2
+    image: nginx
+    ports:
+    - containerPort: 8080
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80

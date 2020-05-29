@@ -1,0 +1,14 @@
+Name:              danny-csip
+Namespace:         dhanendra
+Labels:            app=danny-csip
+Annotations:       <none>
+Selector:          nginxlabel
+Type:              ClusterIP
+IP:                10.97.243.118
+Port:              5678-80  5678/TCP
+TargetPort:        80/TCP
+Endpoints:         <none>
+Session Affinity:  None
+Events:            <none>
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
+danny-csip   ClusterIP   <none>       <none>        5678/TCP   <unknown>

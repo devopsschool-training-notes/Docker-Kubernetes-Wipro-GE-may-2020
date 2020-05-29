@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: hello-pod-maheshb-a
+ namespace: maheshb-dnd
+ labels: 
+  app: webserver-mahesh
+spec:
+ containers:
+ - name: hello-mahesh-a
+   image: nginx
+   ports:
+   - containerPort: 80
+ containers:
+ - name: hello-mahesh-b
+   image: jenkins
+   ports:
+   - containerPort: 90

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-angshu
+  labels:
+    app: webserver1
+spec:
+  containers:
+  - name: jenkins
+    image: ngijenkinsnx
+    ports:
+    - containerPort: 8080

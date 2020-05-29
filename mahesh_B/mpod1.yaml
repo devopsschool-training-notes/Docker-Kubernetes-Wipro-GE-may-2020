@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hellopodmahesb-a
+  labels:
+   app: mserver
+spec:
+  containers:
+  - name: hello-mahesh-v1
+    image: scmgalaxy/nginx-devopsschoolv1
+    ports:
+    - containerPort: 80

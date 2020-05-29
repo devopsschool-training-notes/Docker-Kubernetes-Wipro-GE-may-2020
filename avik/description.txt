@@ -1,0 +1,48 @@
+Name:         nginx
+Namespace:    avik
+Priority:     0
+Node:         ip-172-31-14-47.ap-south-1.compute.internal/172.31.14.47
+Start Time:   Thu, 28 May 2020 08:22:42 +0000
+Labels:       app=webserver100
+Annotations:  <none>
+Status:       Running
+IP:           10.39.0.16
+IPs:
+  IP:  10.39.0.16
+Containers:
+  nginx:
+    Container ID:   docker://18303dd10dfdf18ea1ee5e34708af4904c5b655a74f19895f3919ddc0ed5c80b
+    Image:          nginx
+    Image ID:       docker-pullable://nginx@sha256:30dfa439718a17baafefadf16c5e7c9d0a1cde97b4fd84f63b69e13513be7097
+    Port:           8000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 28 May 2020 08:22:45 +0000
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-mx66q (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  default-token-mx66q:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-mx66q
+    Optional:    false
+QoS Class:       BestEffort
+Node-Selectors:  <none>
+Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                 node.kubernetes.io/unreachable:NoExecute for 300s
+Events:
+  Type    Reason     Age   From                                                  Message
+  ----    ------     ----  ----                                                  -------
+  Normal  Scheduled  17m   default-scheduler                                     Successfully assigned avik/nginx to ip-172-31-14-47.ap-south-1.compute.internal
+  Normal  Pulling    17m   kubelet, ip-172-31-14-47.ap-south-1.compute.internal  Pulling image "nginx"
+  Normal  Pulled     17m   kubelet, ip-172-31-14-47.ap-south-1.compute.internal  Successfully pulled image "nginx"
+  Normal  Created    17m   kubelet, ip-172-31-14-47.ap-south-1.compute.internal  Created container nginx
+  Normal  Started    17m   kubelet, ip-172-31-14-47.ap-south-1.compute.internal  Started container nginx

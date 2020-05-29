@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dileepgs-test-pod1v2
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: dileepgs-test-cont1v2
+    image: scmgalaxy/nginx-devopsschoolv2
+    ports:
+    - containerPort: 80

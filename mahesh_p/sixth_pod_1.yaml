@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: iron-foot-1
+  labels: 
+    app: iron-cluster
+spec:
+  containers:
+  - name: hello-ctr
+    image: scmgalaxy/nginx-devopsschoolv1
+    ports:
+    - containerPort: 80

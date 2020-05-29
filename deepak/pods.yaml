@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod-dgeorge
+  namespace: dgeorge
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: hello-ctr-dgeorge
+    image: jenkins
+    ports:
+    - containerPort: 8080

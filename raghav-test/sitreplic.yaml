@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: sit-replica
+spec:
+  replicas: 10   
+  template:
+    metadata:
+      labels:
+        app: hello-sit
+    spec:
+      containers:
+      - name: hello-sitctr
+        image: scmgalaxy/nginx-devopsschoolv1
+        ports:
+        - containerPort: 80

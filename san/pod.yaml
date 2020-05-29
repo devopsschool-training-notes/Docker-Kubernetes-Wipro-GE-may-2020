@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shan-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: shan-ctr
+    image: nginx
+    ports:
+    - containerPort: 80

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-nginx
+  namespace: abhishek
+  labels:
+    app: webserer_abhi
+spec:
+  containers:
+  - name: hello-nginx
+    image: nginx
+    ports:
+    - containerPort: 8080
+

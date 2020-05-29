@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: second-multi-pod
+  labels: 
+    app: webserver-first
+spec:
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80
+  - name: hello-jenk
+    image: jenkins
+    ports:
+    - containerPort: 8080
+    - containerPort: 50000

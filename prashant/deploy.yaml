@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prash-deploy-new
+  namespace: prashant
+spec:
+  selector:
+    matchLabels:
+      app: prash-deploy-new
+  template:
+    metadata:
+      labels:
+        app: prash-deploy-new
+    spec:
+      containers:
+      - image: scmgalaxy/nginx-devopsschoolv2
+        imagePullPolicy: Always
+        name: nginx-devopsschoolv1
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30

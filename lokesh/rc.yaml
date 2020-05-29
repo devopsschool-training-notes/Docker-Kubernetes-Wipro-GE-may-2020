@@ -1,0 +1,31 @@
+apiVersion: v1
+
+kind: ReplicationController
+
+metadata:
+
+  name: lokesh-rc
+
+spec:
+
+  replicas: 3   
+
+  template:
+
+    metadata:
+
+      labels:
+
+        app: lokesh-rc
+
+    spec:
+
+      containers:
+
+      - name: lokesh-ctr
+
+        image: scmgalaxy/nginx-devopsschoolv1
+
+        ports:
+
+        - containerPort: 80

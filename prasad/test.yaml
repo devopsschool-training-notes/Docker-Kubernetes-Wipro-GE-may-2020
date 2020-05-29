@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-prasad2
+  labels:
+    app: webserver1
+spec:
+  containers:
+  - name: prasad-ubuntu
+    image: ubuntu
+    ports:
+    - containerPort: 8090
+  - name: prasad-jenkins
+    image: jenkins
+    ports:
+    - containerPort: 8080

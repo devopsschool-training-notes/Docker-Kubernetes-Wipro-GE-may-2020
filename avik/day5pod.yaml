@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: day5-pod
+  labels:
+    app: webserver100
+spec:
+  containers:
+    - name: custompod
+      image: scmgalaxy/nginx-devopsschoolv2
+      ports:
+        - containerPort: 8000
+

@@ -1,0 +1,23 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+
+  name: lokesh-pod
+
+  labels: 
+
+    app: webserver
+
+spec:
+
+  containers:
+
+  - name: hello-ctr
+
+    image: nginx
+
+    ports:
+
+    - containerPort: 80

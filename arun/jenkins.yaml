@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkins-arun
+  labels:
+    app: webserver
+spec:
+  containers:
+  - name: jenkins-arun
+    image: jenkins
+    ports:
+    - containerPort: 8080

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: paridhi-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: hello-paridhi
+    image: nginx
+    ports:
+    - containerPort: 80
